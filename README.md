@@ -47,6 +47,8 @@ prompt? (exit)
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate.
 
+Please note that @types/node (as of version 18.15.3) does not yet provide types for node's native fetch api (which was officially [released as of 18.13.0](https://nodejs.org/en/blog/release/v18.13.0)) - and therefore, I added undici as a dev dependency to workaround in order to access node's native fetch library with TypeScript.  Please contribute to the discussion [here](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/60924) if you would like to see node's fetch api get TypeScript types included in @types/node
+
 ## License
 
 [Apache 2.0](https://raw.githubusercontent.com/ehartford/chatgpt-cli/main/LICENSE)
