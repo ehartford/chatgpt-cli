@@ -1,6 +1,8 @@
-
 import readline from 'readline/promises'
 import { stdin, stdout } from 'process'
+
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 interface Message {
   role: 'user' | 'system' | 'assistant'
@@ -8,19 +10,19 @@ interface Message {
 }
 
 interface Completions {
-  id: string;
-  object: string;
-  created: number;
-  model: string;
+  id: string
+  object: string
+  created: number
+  model: string
   usage: {
-    prompt_tokens: number;
-    completion_tokens: number;
-    total_tokens: number;
+    prompt_tokens: number
+    completion_tokens: number
+    total_tokens: number
   };
   choices: ({
-    message: Message;
-    finish_reason: string;
-    index: number;
+    message: Message
+    finish_reason: string
+    index: number
   })[];
 }
 
@@ -37,13 +39,13 @@ interface Completions {
       messages.push({
         role: 'user',
         content: await rl.question("prompt? (exit) ")
-      });
-      if (!messages[messages.length - 1].content || messages[messages.length - 1].content === 'exit') break;
+      })
+      if (!messages[messages.length - 1].content || messages[messages.length - 1].content === 'exit') break
 
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${process.env.OPENAI_APIKEY}`
+          "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
         },
         method: "POST",
         body: JSON.stringify({
