@@ -1,5 +1,6 @@
 import readline from 'readline/promises'
 import { stdin, stdout } from 'process'
+import fetch from 'node-fetch-commonjs'
 
 import * as dotenv from 'dotenv'
 dotenv.config()
